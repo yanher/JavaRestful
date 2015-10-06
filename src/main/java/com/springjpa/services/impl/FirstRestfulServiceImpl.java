@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.angular.hello.util.ToJson;
+import com.springjpa.beans.FirstBean;
 import com.springjpa.dao.IBaseDao;
 import com.springjpa.dao.RestfulDao;
 import com.springjpa.services.FirstRestfulService;
@@ -32,13 +33,9 @@ public class FirstRestfulServiceImpl implements FirstRestfulService {
     @Consumes("application/json")
     public String query() {        
         List<Object> resultList = restfulDao.query();
-        Iterator<Object> iter = resultList.iterator();
-        while(iter.hasNext()){
-            iter.next();
-        }
         ToJson convert = new ToJson();
         JSONArray json = new JSONArray();
-        json = convert.toJSONArray(rs);
+        json = convert.toJSONArray(resultList);
         query.close();
         return json.toString();
     }
