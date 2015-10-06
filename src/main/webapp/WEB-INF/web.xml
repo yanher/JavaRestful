@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>JavaRestful</display-name>
+  <welcome-file-list>
+    <welcome-file>readme.html</welcome-file>
+    <welcome-file>welcome.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 配置spring的IOC容器加载器 -->    
+  <listener>  
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
+    </listener>
+  <context-param>  
+        <param-name>contextConfigLocation</param-name>   
+        <param-value>classpath:applicationContext.xml</param-value>  
+  </context-param>
+  
+  <servlet>
+    <servlet-name>Jersey restful service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+       <param-name>com.sum.jersey.config.property.packages</param-name>
+       <param-value>JavaRestful</param-value> <!--和项目名称一致-->
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey restful service</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <!-- JNDI DATASOURCE -->
+  <!-- <resource-ref>
+	<description>MySQL Datasource example</description>
+	<res-ref-name>WFISDB</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+  </resource-ref> -->
+  <servlet>
+    <description></description>
+    <display-name>FirstServlet</display-name>
+    <servlet-name>FirstServlet</servlet-name>
+    <servlet-class>com.springjpa.servlet.FirstServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstServlet</servlet-name>
+    <url-pattern>/FirstServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>  
+    <servlet-name>HtmlReportServlet</servlet-name>  
+    <servlet-class>com.langhua.JasperReport.Servlet.HtmlReportServlet</servlet-class>  
+  </servlet> 
+    <servlet>  
+ <servlet-name>ImageServlet</servlet-name>  
+    <servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>  
+  </servlet>  
+  <servlet-mapping>  
+    <servlet-name>ImageServlet</servlet-name>  
+    <url-pattern>/servlets/image</url-pattern>  
+  </servlet-mapping>  
+  <!-- 页面session配置 -->  
+  <session-config>  
+    <session-timeout>20</session-timeout>  
+  </session-config>  
+  <!-- 错误页面 -->  
+  <error-page>  
+    <error-code>404</error-code>  
+    <location>/error404.html</location>  
+  </error-page> 
+</web-app>

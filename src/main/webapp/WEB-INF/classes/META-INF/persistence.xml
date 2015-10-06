@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+  
+<persistence version="1.0"  
+xmlns="http://java.sun.com/xml/ns/persistence"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">  
+
+ <persistence-unit name="unitName" transaction-type="RESOURCE_LOCAL">
+<!--  <persistence-unit name="unitName" transaction-type="JTA"> -->
+   <!-- javax.persistence.PersistenceProvider接口的一个实现类(可选) -->  
+   <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+   <!-- Jta-data-source和 non-jta-data-source用于分别指定持久化提供商使用的JTA和/或non-JTA数据源的全局JNDI名称(可选) -->  
+   <!-- <jta-data-source>java:comp/env/WFISDB</jta-data-source> -->
+   <!-- <non-jta-data-source>java:comp/env/WFISDB</non-jta-data-source> -->
+  <class>com.springjpa.beans.FirstBean</class>
+   <!-- 声明是否扫描jar文件中标注了@Enity类加入到上下文.若不扫描,则如下:(可选) -->  
+   <!-- <exclude-unlisted-classes/>  --> 
+  <exclude-unlisted-classes>true</exclude-unlisted-classes>
+   <!-- 声明orm.xml所在位置.(可选) -->  
+  <!--  <mapping-file>product.xml</mapping-file>   -->
+  
+   <!-- 以包含persistence.xml的jar文件为基准的相对路径,添加额外的jar文件.(可选) -->  
+  <!--  <jar-file>../lib/model.jar</jar-file>   -->
+  
+   <!--   厂商专有属性(可选)   -->  
+<properties>  
+    <property name="openjpa.persistence.ConnectionFactoryProperties" value="PrettyPrint=true,PrettyPrintLineLength=80"/>
+    <property name="openjpa.jdbc.DBDictionary" value="mysql"/>
+    <property name="openjpa.FetchBatchSize" value="20"/>
+    <property name="openjpa.jdbc.ResultSetType" value="scroll-insensitive"/>
+    <property name="openjpa.jdbc.FetchDirection" value="reverse"/>
+    <property name="openjpa.jdbc.LRSSize" value="last"/>
+    <property name="openjpa.RuntimeUnenhancedClasses" value="supported"/> 
+   </properties>   
+  
+</persistence-unit>  
+  
+</persistence>    

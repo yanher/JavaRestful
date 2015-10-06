@@ -1,0 +1,191 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 30px;
+}
+
+body nav.navbar-fixed-bottom {
+    min-height: 20px;
+}
+
+.glyphicon-user {
+    margin-right: 5px;
+}
+
+table .btn.btn-link {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+body .gridClass {
+    width: 100%;
+    height: 100%;
+}
+
+body .gridClass.credit-note {
+    width: 100%;
+    height: calc(100% - 40px);
+}
+
+html,
+body,
+div[ui-view="mainbody"],
+div[ui-view="mainbody"]>div,
+div[ui-view="mainbody"]>div>div {
+    height: 100%;
+}
+
+div[ui-view="login"] form {
+    position: absolute;
+    width: 360px;
+    top: 90px;
+}
+
+.ui-grid-viewport.ng-isolate-scope {
+    overflow-x: hidden !important;
+}
+
+.ui-grid-grid-footer {
+    padding-left: 2px;
+    padding-top: 5px;
+    /*background-color: #ddd;*/
+}
+
+#mydiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    /*background-color:grey;*/
+    opacity: .8;
+}
+
+.ajax-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    /* -1 * image width / 2 */
+    margin-top: -32px;
+    /* -1 * image height / 2 */
+    display: block;
+    width: 50px;
+    height: 50px;
+    z-index: 9000;
+}
+
+#detailContract > div,
+#changePwd>div {
+    margin-top: 120px;
+}
+
+
+/*.ui-grid-row:hover div {
+    background-color: #ddd;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #ddd;
+}*/
+
+.ui-grid-footer-cell-row {
+    text-align: right;
+}
+
+#uploadWin .modal-body {
+    min-height: 450px;
+}
+
+#uploadWin .modal-body > div.col-md-4.bad-file-alert > div {
+    margin-top: 50px;
+    position: absolute;
+    width: calc(100% - 30px);
+}
+
+#uploadWin .modal-body > div.col-md-4.upload-file {
+    margin-top: 150px;
+    margin-bottom: 20px;
+}
+
+#uploadWin .modal-body > div[ng-show] {
+    padding: 0 5px;
+    height: 100%;
+}
+
+#exportPreview .modal-body {
+    min-height: 450px;
+}
+
+#exportPreview .modal-body > div.col-md-4.bad-file-alert > div {
+    margin-top: 50px;
+    position: absolute;
+    width: calc(100% - 30px);
+}
+
+#exportPreview .modal-body > div.col-md-4.upload-file {
+    margin-top: 150px;
+}
+
+#exportPreview .modal-body > div[ng-show] {
+    padding: 0 5px;
+    height: 100%;
+}
+
+.glyphicon.glyphicon-download-alt {
+    margin-right: 5px;
+}
+
+.text-muted {
+    color: #fff;
+}
+
+#detailContract .modal-footer .btn:last {
+    margin-left: 10px;
+}
+
+.panel-body.text-info span.square-info {
+    margin-right: 30px;
+}
+
+div.ui-grid-cell input[type="checkbox"],
+div.ui-grid-cell .glyphicon-lock,
+div.ui-grid-cell .glyphicon-check {
+    margin: 0 0 0 6px;
+}
+
+.credit-note-operation {
+    margin-bottom: 8px;
+}
+
+#sizing-addon2 {
+    border-right: none;
+    border-left: none;
+}
+
+body .history .gridClass {
+    height: calc(50% - 35px);
+}
+
+.width-fixed {
+    width: 150px;
+}
+
+.ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ellipsis-md {
+    width: 120px;
+}
+
+.glyphicon.glyphicon-transfer.from-vcecure-remark {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}

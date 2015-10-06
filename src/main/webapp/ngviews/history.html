@@ -1,0 +1,176 @@
+<div class="container history">
+    <h5>Upload history</h5>
+    <div class="gridClass" ui-grid="gridOptions"></div>
+    <h5>Recall history</h5>
+    <div class="gridClass" ui-grid="gridOptionsRecall"></div>
+</div>
+<div class="modal fade" id="detailFile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-x-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="unequalRecords = [];"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Uploaded by {{uploader}} At {{ uploadTime| date:"yyyy-MM-dd HH:mm:ss"}}</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="col-md-12" ng-show="availabeChargedContracts.length">
+                    <table class="table table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Contract</th>
+                                <th>Order</th>
+                                <th>Customer</th>
+                                <th>Dealer</th>
+                                <th>Product</th>
+                                <th>Invoice</th>
+                                <th>Amout</th>
+                                <th>Date</th>
+                                <th>Remark</th>
+                                <th ng-show="availabeChargedContracts[0].invoice_type=='VAT'">Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="c in availabeChargedContracts">
+                                <td>{{c.contract_number}}</td>
+                                <td>{{c.invoice_order}}</td>
+                                <td><span class="width-fixed ellipsis">{{c.customer}}</span></td>
+                                <td><span class="width-fixed ellipsis">{{c.dealer}}</span></td>
+                                <td>{{c.product}}</td>
+                                <td><span class="width-fixed ellipsis">{{c.invoice_number}}</span></td>
+                                <td>{{c.invoice_amt | number:2}}</td>
+                                <td>{{c.invoice_date | date:"yyyy-MM-dd"}}</td>
+                                <td><span class="width-fixed ellipsis">{{c.remark}}</span></td>
+                                <td ng-show="availabeChargedContracts[0].invoice_type=='VAT'">{{c.vat_type}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12 text-left">
+                    <div class="panel panel-danger" ng-show="unequalRecords.length">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>Unequal records [{{unequalRecords.length}}]
+                        </div>
+                        <div class="panel-body text-danger">
+                            <table class="table table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Contract</th>
+                                        <th>Row_S1</th>
+                                        <th>Row_S2</th>
+                                        <th>Price_S1</th>
+                                        <th>Price_S2</th>
+                                        <th>Difference</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="c in availabeChargedContracts" ng-show="c.price_s1!==c.price_s2">
+                                        <td>{{c.contract_number}}</td>
+                                        <td>{{c.row_s1}}</td>
+                                        <td>{{c.row_s2}}</td>
+                                        <td>{{c.price_s1 | number:2}}</td>
+                                        <td>{{c.price_s2 | number:2}}</td>
+                                        <td>{{c.price_s1-c.price_s2 | number:2}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 text-left">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Summary
+                        </div>
+                        <div class="panel-body text-info">
+                            Total: <span class="square-info">{{availableTotal | number:2}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-offset-6 col-md-6 text-right">
+                    <downloader fileid="{{uploadFileID}}" filetype=""><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>Download original file</downloader>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span ng-show="deleteUser" class="text-left h4 text-danger float-left">Recalled by {{deleteUser}} At {{ deleteTime| date:"yyyy-MM-dd HH:mm:ss"}}</span>
+                <a tabindex="0" type="button" class="btn btn-primary" role="button" ng-show="$root.user.canRecall&&!deleted" data-toggle="popover" data-trigger="focus" data-placement="left" data-content='Recall all records in this file? <button class="btn btn-danger btn-xs" id="deleteFile">Yes!</button>'>Recall</a>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="unequalRecords = [];">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="detailRecall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myLargeModalLabel">Recalled by {{theContract.USER_NAME}} At {{theContract.RECALL_DATE | date:"yyyy-MM-dd HH:mm:ss"}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Contract</label>
+                        <div class="col-sm-10">
+                            <input value="{{theContract.CONTRACT_NUMBER}}" type="text" class="form-control" id="inputEmail3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Order</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.INVOICE_ORDER}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Customer</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.CUSTOMER}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Dealer</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.DEALER}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Product</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.PRODUCT}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Invoice</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.INVOICE_NUMBER}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Amount</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.INVOICE_AMT | number:2}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Date</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.INVOICE_DATE | date:'yyyy-MM-dd'}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Remark</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.REMARK}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="theContract.INVOICE_TYPE=='VAT'">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Type</label>
+                        <div class="col-sm-10">
+                            <input type="text" value="{{theContract.VAT_TYPE}}" class="form-control" id="inputPassword3">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
