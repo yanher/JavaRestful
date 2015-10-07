@@ -1,4 +1,4 @@
-package com.springjpa.services.impl;
+/*package com.springjpa.services.impl;
 
 import java.util.Iterator;
 import java.util.List;
@@ -32,13 +32,9 @@ public class FirstRestfulServiceImpl implements FirstRestfulService {
     @Produces("application/json")
     @Consumes("application/json")
     public String query() {        
-        List<Object> resultList = restfulDao.query();
-        ToJson convert = new ToJson();
-        JSONArray json = new JSONArray();
-        json = convert.toJSONArray(resultList);
-        query.close();
-        return json.toString();
+        return restfulDao.query();
     }
 
 
 }
+*/

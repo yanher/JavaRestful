@@ -1,6 +1,10 @@
 package com.angular.hello.util;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.sql.ResultSet;
+import java.util.Iterator;
+import java.util.List;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
@@ -19,6 +23,25 @@ public class ToJson {
              }else if(rsmd.getColumnType(i)==java.sql.Types.INTEGER){
                  obj.put(column_name, rs.getInt(i));
              }
+         }
+         json.put(obj);
+     }
+     return json;
+ }
+ 
+ public <T> JSONArray toJSONArray(List<T> rs) throws Exception{
+     JSONArray json = new JSONArray();
+     Iterator<T> it = rs.iterator();    
+     while(it.hasNext()){
+         JSONObject obj = new JSONObject();
+         T bean = it.next();
+         Field[] fields = bean.getClass().getDeclaredFields();
+         for(Field field : fields){
+             if(field.getGenericType().getClass().getName().equalsIgnoreCase("String.class")){
+                 obj.put(field.getName(), bean.getClass().getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())+"()", null).invoke(bean, null));
+             }else if(field.getGenericType().getClass() == Class.forName("String.class")){
+                 obj.put(field.getName(),bean.getClass().getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())+"()", null).invoke(bean, null));
+             }             
          }
          json.put(obj);
      }

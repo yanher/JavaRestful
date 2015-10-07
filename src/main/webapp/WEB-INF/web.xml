@@ -11,12 +11,15 @@
     </listener>
   <context-param>  
         <param-name>contextConfigLocation</param-name>   
-        <param-value>classpath:applicationContext.xml</param-value>  
+        <param-value>
+              classpath:applicationContext.xml
+        </param-value>
   </context-param>
   
   <servlet>
     <servlet-name>Jersey restful service</servlet-name>
-    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <!-- <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class> -->
+    <servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
     <init-param>
        <param-name>com.sum.jersey.config.property.packages</param-name>
        <param-value>JavaRestful</param-value> <!--和项目名称一致-->

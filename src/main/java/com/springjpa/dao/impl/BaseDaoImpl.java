@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.springjpa.common.GenericsUtils;
 import com.springjpa.dao.IBaseDao;
@@ -32,7 +33,7 @@ import com.springjpa.dao.IBaseDao;
 @SuppressWarnings("unchecked")
 public class BaseDaoImpl<T, PK extends Serializable> implements IBaseDao<T, PK> {
 
-	@PersistenceContext(unitName="openjpa-unit",type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(unitName="openjpa-unit",type=PersistenceContextType.TRANSACTION)
 	protected EntityManager em;
 	protected Class<T> entityClass;
 	

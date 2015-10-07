@@ -24,7 +24,7 @@ import com.springjpa.beans.FirstBean;
 
 @Component("firstServletImpl")
 public class FirstServletImpl {
-    @PersistenceContext(unitName="openjpa-unit",type=PersistenceContextType.EXTENDED)
+    @PersistenceContext(unitName="openjpa-unit",type=PersistenceContextType.TRANSACTION)
     private EntityManager em;
     @Transactional(propagation=Propagation.REQUIRED,readOnly = true)
     public String queryAll() {  
