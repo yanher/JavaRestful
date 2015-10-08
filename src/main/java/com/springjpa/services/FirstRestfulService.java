@@ -12,16 +12,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.springjpa.dao.RestfulDao;
-//import com.springjpa.services.impl.FirstRestfulServiceImpl;
+
 @Path("/rest/")
+@Service("firstRestfulService")
 public class FirstRestfulService {
     @Resource
     private RestfulDao restfulDao;
     
     @Path("/query")
     @GET
-    @Produces("application/json")
-    @Consumes("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public String query() {        
         return restfulDao.query();
