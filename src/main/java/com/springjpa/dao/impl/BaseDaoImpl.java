@@ -175,9 +175,9 @@ public class BaseDaoImpl<T, PK extends Serializable> implements IBaseDao<T, PK> 
 	@Override
 	public List<T> queryAll(String orderStr) {
 		StringBuffer sbSql = new StringBuffer();
-		sbSql.append(" FROM ").append(entityName(entityClass));
+		sbSql.append("SELECT EN FROM ").append(entityName(entityClass)+" EN");
 		if (orderStr != null && !orderStr.equals(""))
-			sbSql.append(" ORDER BY ").append(orderStr);
+			sbSql.append(" ORDER BY ").append("EN."+orderStr);
 		List<T> results = em.createQuery(sbSql.toString()).getResultList();
 		return results;
 	}

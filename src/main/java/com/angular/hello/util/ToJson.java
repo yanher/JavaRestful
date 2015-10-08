@@ -37,7 +37,11 @@ public class ToJson {
          T bean = it.next();
          Field[] fields = bean.getClass().getDeclaredFields();
          for(Field field : fields){
-             if(field.getGenericType().getClass().getName().equalsIgnoreCase("String.class")){
+             //field.getGenericType() : int
+             //field.getGenericType().getClass() :  (java.lang.Class<T>) class java.lang.Class
+             if(field.getGenericType().toString().equalsIgnoreCase("int")){
+                 obj.put(field.getName(), bean.getClass().getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())+"()", null).invoke(bean, null));
+             }else if(field.getGenericType().toString().equalsIgnoreCase("String")){
                  obj.put(field.getName(), bean.getClass().getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())+"()", null).invoke(bean, null));
              }else if(field.getGenericType().getClass() == Class.forName("String.class")){
                  obj.put(field.getName(),bean.getClass().getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())+"()", null).invoke(bean, null));
