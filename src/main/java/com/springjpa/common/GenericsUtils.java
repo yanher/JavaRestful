@@ -32,6 +32,7 @@ public class GenericsUtils {
         // 返回表示此类型实际类型参数的Type对象的数组,数组里放的都是对应类型的Class, 如BuyerServiceBean extends  
         // DaoSupport<Buyer,Contact>就返回Buyer和Contact类型  
         Type[] params = ((ParameterizedType) genType).getActualTypeArguments();  
+        //[class com.springjpa.beans.FirstBean,class java.lang.Integer]
         if (index >= params.length || index < 0) {  
   
             throw new RuntimeException("你输入的索引"  
