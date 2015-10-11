@@ -12,6 +12,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <!-- <jta-data-source>java:comp/env/WFISDB</jta-data-source> -->
    <!-- <non-jta-data-source>java:comp/env/WFISDB</non-jta-data-source> -->
   <class>com.springjpa.beans.FirstBean</class>
+  <class>com.springjpa.beans.Users</class>
    <!-- 声明是否扫描jar文件中标注了@Enity类加入到上下文.若不扫描,则如下:(可选) -->  
    <!-- <exclude-unlisted-classes/>  --> 
   <exclude-unlisted-classes>true</exclude-unlisted-classes>

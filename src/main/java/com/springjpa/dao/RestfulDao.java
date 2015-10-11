@@ -1,5 +1,6 @@
 package com.springjpa.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,12 +14,8 @@ import com.springjpa.beans.FirstBean;
 import com.springjpa.dao.impl.BaseDaoImpl;
 
 @Repository("restfulDao")
-public class RestfulDao extends BaseDaoImpl<FirstBean,Integer> {
- //   @SuppressWarnings("rawtypes")
-/*    @Resource
-    private IBaseDao baseDao;*/
-    
- //   @SuppressWarnings("unchecked")
+public class RestfulDao<T> extends BaseDaoImpl<T,Integer> {
+
     public <T> String query(){
         
         List<T> resultList = (List<T>)super.queryAll("id");
@@ -30,7 +27,21 @@ public class RestfulDao extends BaseDaoImpl<FirstBean,Integer> {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return json.toString();
+     }
+
+     public <T> String queryById(Integer id){
         
+        T bean = (T) super.queryById(id);
+        ToJson convert = new ToJson();
+        JSONArray json = new JSONArray();
+        ArrayList<T> list = new ArrayList<T>();
+        list.add(bean);
+        try {
+            json = convert.toJSONArray(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return json.toString();
     }
 }

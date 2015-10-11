@@ -21,7 +21,7 @@ angularAPP.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                         $state.go('main');
                     };
                     $scope.login = function() {
-                        UserService.loginPost($scope.userName, $scope.password).success(function(data, status) {
+                        UserService.login($scope.userName, $scope.password).success(function(data, status) {
                             var user = data[0];
                             if (typeof(user)!="undefined") {
                                 $rootScope.user = {

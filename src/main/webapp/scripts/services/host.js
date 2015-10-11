@@ -8,6 +8,9 @@ angular.module('HostServiceModule', []).factory('Host', function() {
     var invoicePath = function() {
         return 'http://localhost:51014/Accounting/Invoice.asmx/';
     };
+    var userPathNew = function() {
+        return 'http://localhost:8090/JavaRestful/api/login/';
+    };
     return {
         path: function() {
             return path();
@@ -17,6 +20,9 @@ angular.module('HostServiceModule', []).factory('Host', function() {
         },
         invoicePath: function() {
             return invoicePath();
+        },
+        userPathNew: function() {
+            return userPathNew();
         }
-    }
+    };
 });
