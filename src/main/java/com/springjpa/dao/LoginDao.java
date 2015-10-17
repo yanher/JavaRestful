@@ -11,6 +11,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.springframework.stereotype.Repository;
 
 import com.angular.hello.util.ToJson;
+import com.springjpa.beans.Users;
 import com.springjpa.common.GenericsUtils;
 import com.springjpa.dao.impl.BaseDaoImpl;
 
@@ -18,7 +19,7 @@ import com.springjpa.dao.impl.BaseDaoImpl;
  * 
  */
 @Repository("loginDao")
-public class LoginDao<T> extends BaseDaoImpl<T,Integer> {
+public class LoginDao extends BaseDaoImpl<Users,Integer> {
      
     public <T> String searchUser(String name , Integer pwd){
         //Class<T> bean = (Class<T>) super.getEntityClass(); : 得到的是object类
@@ -27,7 +28,7 @@ public class LoginDao<T> extends BaseDaoImpl<T,Integer> {
         
         // Class<T> bean = GenericsUtils.getSuperClassGenricType((Class)(((ParameterizedType)super.getClass().getGenericSuperclass()).getActualTypeArguments()[0])); : sun.reflect.generics.reflectiveObjects.ParameterizedTypeImpl can not be cast to class
         Object[] params = {name,pwd};
-        String jpql = "select count(users) from " + super.entityClass.getName() + " users where users.name = ?1 and password = ?2 ";
+        String jpql = "select users from " + super.entityClass.getName() + " users where users.name = ?1 and users.pwd = ?2 ";
         List<T> resultList = (List<T>)super.queryList(jpql, params);
         ToJson convert = new ToJson();
         JSONArray json = new JSONArray();

@@ -1,5 +1,6 @@
 package com.springjpa.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import com.springjpa.beans.FirstBean;
 import com.springjpa.dao.impl.BaseDaoImpl;
 
 @Repository("restfulDao")
-public class RestfulDao<T> extends BaseDaoImpl<T,Integer> {
+public class RestfulDao extends BaseDaoImpl<FirstBean,Integer> {
 
     public <T> String query(){
         

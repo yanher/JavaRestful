@@ -50,7 +50,7 @@ public class ToJson {
          //((ParameterizedType) bean.getClass().getGenericSuperclass() instanceof )
          for(Field field : fields){
              field.setAccessible(true);
-             if(field.getGenericType().toString().equalsIgnoreCase("int")){
+             if(field.getGenericType().toString().equalsIgnoreCase("class java.lang.Integer")){
                  obj.put(field.getName(), clazz.getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())).invoke(bean));
              }else if(field.getGenericType().toString().equalsIgnoreCase("class java.lang.String")){
                  obj.put(field.getName(), clazz.getDeclaredMethod("get"+field.getName().substring(0, 1).toUpperCase()+field.getName().substring(1, field.getName().length())).invoke(bean));
