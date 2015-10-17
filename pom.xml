@@ -230,7 +230,7 @@
                 <url>http://localhost:8090/manager</url>  
                 <username>tomcat</username>  
                 <password>123456</password>  
-                <path>/javarest</path>  
+                <path>/JavaRestful</path>  
             </configuration>  
        </plugin> 
       <!-- 还是有错误 -->
