@@ -25,8 +25,8 @@ angularAPP.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                             var user = data[0];
                             if (typeof(user)!="undefined") {
                                 $rootScope.user = {
-                                    name: user.userId,
-                                    pwd: user.passWord
+                                    name: user.name,
+                                    pwd: user.pwd
                                 };
                                 $localStorage.user = $rootScope.user;
                                 $state.go('main');
