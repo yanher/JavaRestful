@@ -183,11 +183,11 @@ public class BaseDaoImpl<T, PK extends Serializable> implements IBaseDao<T, PK> 
 	}
 
 	@Override
-	public List<T> queryList(String hql, Object[] params) {
-		Query query = em.createQuery(hql);
+	public List<T> queryList(String jpql, Object[] params) {
+		Query query = em.createQuery(jpql);
 		if (params != null && params.length > 0) {
 			for (int i = 0; i < params.length; i++)
-				query.setParameter(i, params[i]);
+				query.setParameter(i+1, params[i]);
 		}
 		return query.getResultList();
 	}
