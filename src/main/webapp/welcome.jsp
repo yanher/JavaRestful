@@ -12,12 +12,11 @@
 </head>
 
 <body>
-    <div ui-view="login"></div>
+    <div class="container"><div ui-view="login"></div></div>    
     <div ui-view="main"></div>
-
-    <div id="mydiv" ng-show="showLoader.show">
+    <!-- <div id="mydiv" ng-show="showLoader.show">
         <img src="images/ajax-loader.gif" class="ajax-loader" />
-    </div>
+    </div> -->
 
     <script src="scripts/vendor/jquery/jquery-1.11.2.js"></script>
     <script src="styles/bootstrap-3.3.5/js/bootstrap.js"></script>
