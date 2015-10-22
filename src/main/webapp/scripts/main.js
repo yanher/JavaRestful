@@ -15,7 +15,7 @@ angularAPP.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
     state('login', {
         views: {
             'login': {
-                templateUrl: 'ngviews/login.html',
+                templateUrl: 'ngviews/login_new.html',
                 controller: ['$rootScope', '$scope', '$state', '$localStorage', 'UserService', function($rootScope, $scope, $state, $localStorage, UserService) {
                     if ($rootScope.user) {
                         $state.go('main');
