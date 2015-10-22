@@ -189,3 +189,10 @@ body .history .gridClass {
 .float-left {
     float: left;
 }
+.login {
+	position:absolute;
+	top:3%;
+	left:40%;
+	width:150px;
+	height:40px;
+}
