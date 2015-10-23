@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>angular</title>
+    <title>YHG SYSTEM</title>
     <link href="styles/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet" />
     <link href="styles/angular-ui-grid/angular-ui-grid/angular-ui-grid.css" rel="stylesheet" />
     <link href="styles/main.css" rel="stylesheet" />
     <link href="styles/login.css" rel='stylesheet' type='text/css' />
+    <link rel="icon" sizes="16x16" href="images/volvo_tag.png" type="image/png" />
 </head>
 
 <body>

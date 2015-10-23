@@ -16,7 +16,10 @@ body{
   .center-block();
 }
 .form {
-	background: DarkSlateBlue;
+    /*filter:alpha(opacity=50);
+    opacity:0.5;*/
+    border:1px solid rgba(72,61,139,0.3);
+	/*background: DarkSlateBlue;*/
 	position: relative;
 	width: 30%;
 	margin: 3% auto 0 auto;
@@ -27,12 +30,14 @@ body{
 	-o-border-radius: 15px;
 }
 .head-info {
+	border:0px solid rgba(72,61,139,0.0);
+		opacity:1.0;
   padding: 5px 0;
   text-align: center;
-  font-weight: 600;
-  font-size: 2em;
-  color: #fff;
-  background: Green;
+  font-weight: 1000;
+  font-size: 4em;
+  color: #FFFFFF;
+  /*background: Green;*/
   height: 50px;
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -46,6 +51,7 @@ body{
 	-o-border-top-right-radius: 10px;
 }
 .avtar img {
+		opacity:1.0;
   #margin: 2em 0 0;
   width: 60%;
   background: DarkSlateBlue;
@@ -61,19 +67,22 @@ body{
 	-o-border-top-right-radius: 10px;
 }
 .text {
+		opacity:1.0;
   font-size:20px;
   color: #fff;
 }
 input[type="text"] {
+		opacity:1.0;
 	  width: 100%;
 	  padding: 1em 2em 1em 3em;
 	  font-size: 18px;
 	  font-weight: 100;
 	  border-bottom: 1px solid#484856;
-	  margin-top: 2em;
+	/*  margin-top: 2em; */
 	  border-radius:10px 10px 10px 10px;
 }
 input[type="password"] {
+		opacity:1.0;
 	  width: 100%;
 	  padding: 1em 2em 1em 3em;
 	  font-size: 18px;
@@ -82,8 +91,10 @@ input[type="password"] {
 	  border-radius:10px 10px 10px 10px;
 }
 .submit {
+		opacity:1.0;
 	  border-radius:10px 10px 10px 10px;
 }
 .div1{
+		opacity:1.0;
 	height:10px;
 }

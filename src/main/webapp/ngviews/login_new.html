@@ -1,21 +1,24 @@
 
 <!--SIGN UP-->
-<div align="center" >
+<div align="center" ng-hide="$root.user">
 	<form class="form container-fluid " >
-		<div class="form-group h1 head-info">
-			<div align="center">YHG Login Form</div>
+		<div class="form-group h1 head-info" >
+			<div >Login  Form</div>
 		</div>
-		<div class="avtar form-group">
-				<img src="images/avtar.png" />
+		<p class=" form-group div1">
+			</p> 
+		<div class="form-group">
+		   <img src="images/login.png" class="img-block" />
 		</div>
 		<div class="form-group">
-			<input name="text" type="text" class="form-control" id="username" placeholder="User Name"/>
-			<p class="div1"></p> 
-			<input type="password" class="form-control" id="password" placeholder="Password"/>
+			<input name="text" type="text" class="form-control" id="username" ng-model="userName" placeholder="User Name" required/>
+			<p class="div1">
+			</p> 
+			<input type="password" class="form-control" id="password" placeholder="Password" ng-model="password" required/>
 		</div>
 
 		<div class="form-group">
-			<input type="submit" class="btn btn-primary btn-lg btn-block submit"></input>
+			<input type="submit" ng-disabled="!userName||!password" value="submit" class="btn btn-primary btn-lg btn-block submit" ng-click="login()"></input>
 		</div>
 	</form>
 </div>
