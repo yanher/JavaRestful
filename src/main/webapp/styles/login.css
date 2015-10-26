@@ -30,15 +30,15 @@ body{
 	-o-border-radius: 15px;
 }
 .head-info {
-	border:0px solid rgba(72,61,139,0.0);
+	border:1px solid rgba(0,0,128,0.3);
 		opacity:1.0;
-  padding: 5px 0;
+  padding: 8px 5px;
   text-align: center;
-  font-weight: 1000;
-  font-size: 4em;
-  color: #FFFFFF;
-  /*background: Green;*/
-  height: 50px;
+  font-weight: 3000;
+  font-size: 3.5em;
+  color: #000080;
+  /*background: #B2DFEE;*/ 
+  height: 70px;
 	border-top-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	-webkit-border-top-left-radius: 10px;
