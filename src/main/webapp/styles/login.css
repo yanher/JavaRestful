@@ -74,7 +74,8 @@ body{
 input[type="text"] {
 		opacity:1.0;
 	  width: 100%;
-	  padding: 1em 2em 1em 3em;
+	/*  padding: 1em 2em 1em 3em;*/
+	  padding: 1em 1em 1em 1em;
 	  font-size: 18px;
 	  font-weight: 100;
 	  border-bottom: 1px solid#484856;
@@ -84,7 +85,8 @@ input[type="text"] {
 input[type="password"] {
 		opacity:1.0;
 	  width: 100%;
-	  padding: 1em 2em 1em 3em;
+	/*  padding: 1em 2em 1em 3em; */
+	  padding: 1em 1em 1em 1em;
 	  font-size: 18px;
 	  font-weight: 100;
 	  border-bottom: 1px solid#484856;
