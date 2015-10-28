@@ -12,3 +12,23 @@ body {
 .inline {
 	display:inline;
 }
+.sidebar {
+  position: fixed;
+  right: 0;
+}
+.submainbody {
+  bottom: 0;
+  position: fixed;
+}
+.topleft {
+  left: 0;
+  padding-left: 0;
+  margin-left: 40px;
+  position: fixed;
+}
+.topright {
+  right: 0;
+  padding-right: 0;
+  margin-right: 0;
+  position: fixed;
+}

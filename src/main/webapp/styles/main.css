@@ -208,3 +208,9 @@ body .history .gridClass {
   margin-left: auto;
   margin-right: auto;
 }
+.mainbody {
+  display: block;
+  text-align: right;
+  margin-left: auto;
+  margin-right: auto;
+}
