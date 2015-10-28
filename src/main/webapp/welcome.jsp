@@ -8,14 +8,16 @@
     <title>YHG SYSTEM</title>
     <link href="styles/bootstrap-3.3.5/css/bootstrap.css" rel="stylesheet" />
     <link href="styles/angular-ui-grid/angular-ui-grid/angular-ui-grid.css" rel="stylesheet" />
-    <link href="styles/main.css" rel="stylesheet" />
-    <link href="styles/login.css" rel='stylesheet' type='text/css' />
+    <link href="styles/main.css" rel="stylesheet" />    
     <link rel="icon" sizes="16x16" href="images/volvo_tag.png" type="image/png" />
 </head>
 
 <body>
     <div class="login"><div ui-view="login"></div></div>  
-    <div ui-view="main"></div>
+    <div class=""><div ui-view="topbar"></div></div>
+    <div class="sidebar"><div ui-view="sidebar"></div></div>
+    <div class=""><div ui-view="main"></div></div>
+    <!-- <div class="bottom"><div ui-view="statusbar"></div></div> -->
     <!-- <div id="mydiv" ng-show="showLoader.show">
         <img src="images/ajax-loader.gif" class="ajax-loader" />
     </div> -->

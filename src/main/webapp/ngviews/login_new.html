@@ -1,6 +1,14 @@
-
+<!DOCTYPE html>
+<html lang="en" ng-app="angularAPP">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="styles/login.css" rel='stylesheet' type='text/css' />
+    <title>Login In</title>
+</head>
 <!--SIGN UP-->
-<div align="center" ng-hide="$root.user">
+<div align="center" ng-hide="typeof($localStorage.user) === 'undefined'">
 	<form class="form container-fluid " >
 		<div class="form-group h1 head-info" >
 			<div >Sign In Form</div>

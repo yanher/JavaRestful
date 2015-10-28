@@ -27,6 +27,9 @@ angularAPP.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
                                 $rootScope.user = {
                                     name: user.name,
                                     pwd: user.pwd
+                                    /*canRecall: user.permission.search(',recall,') > -1,
+                                    canUpload: user.permission.search(',upload,') > -1,
+                                    canCredit: user.permission.search(',credit,') > -1*/
                                 };
                                 $localStorage.user = $rootScope.user;
                                 $state.go('main');
@@ -43,6 +46,14 @@ angularAPP.config(['$stateProvider', '$urlRouterProvider', function($stateProvid
     }).
     state('main', {
         views: {
+        	'topbar': {
+                templateUrl: 'ngviews/topbar.html',
+                controller: ''
+            },
+            'sidebar': {
+                templateUrl: 'ngviews/sidebar.html',
+                controller: ''
+            },
             'main': {
                 templateUrl: 'ngviews/mainbody.html',
                 controller: ''
